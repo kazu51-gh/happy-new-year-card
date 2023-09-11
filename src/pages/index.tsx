@@ -1,10 +1,18 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { basePath } from '../../next.config'
 
 const BASE_PATH = basePath ? basePath : "";
 
 export default function Home() {
+  const router = useRouter();
   const [userName, setUserName] = useState('');
+
+  const moveShowPage = () => {
+    const query = { name: userName };
+    router.push({ pathname: "show", query: query }, "show");
+  }
+
   return (
     <main
       className={'font-serif'}
@@ -25,7 +33,7 @@ export default function Home() {
           />
           <button
             className='text-1xl text-center bg-sky-200 hover:bg-sky-100 rounded px-4 py-2 my-4 w-1/5'
-            onClick={() => console.log(userName)}
+            onClick={() => moveShowPage()}
           >
             送信
           </button>
