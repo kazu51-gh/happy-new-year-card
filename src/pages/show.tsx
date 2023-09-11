@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-export default function showCard() {
+export default function ShowCard() {
   const router = useRouter();
 
   return(
